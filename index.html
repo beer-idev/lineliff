@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+<script>
+(async () => {
+  await liff.init({ liffId: "PUT_LIFF_ID_HERE" });
+
+  // ต้องเปิดจาก LINE ถึงจะได้ userId
+  const profile = await liff.getProfile();
+  const userId = profile.userId;
+
+  // ใส่ Google Form + entry ของช่อง userId (ไปเอาในขั้น 3)
+  const FORM_URL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSfcs3B4xl8zAVkpcY86CsmLSPdTSTa6kDzJbGZfSVlQdQvMjw/viewform?usp=pp_url&entry.867893738=" + encodeURIComponent(userId);
+
+  window.location.replace(FORM_URL);
+})();
+</script>
+</body>
+</html>
